@@ -25,8 +25,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
           const webAppUserData = window.Telegram.WebApp.initDataUnsafe.user;
           if (webAppUserData) {
-            if (webAppUserData.usernames && webAppUserData.usernames !== null) {
-              setUsername(webAppUserData.usernames);
+            if (webAppUserData.username && webAppUserData.username !== null) {
+              setUsername(webAppUserData.username);
             }
           }
         }
