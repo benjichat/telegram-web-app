@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     axios.post('/api/validate-hash', { hash: window.Telegram.WebApp.initData }).then((response) => {
       setIsHashValid(response.status === 200);
       if (response.status === 200) {
-        const { username } = response.data.username; // Assuming the user ID is returned in the response
+        const { username } = response.data; // Assuming the user ID is returned in the response
         setUsername(username);
       }
     });
