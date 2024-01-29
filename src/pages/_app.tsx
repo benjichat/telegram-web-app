@@ -4,20 +4,32 @@ import axios from 'axios';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 
+type TelegramUserData = {
+  id: number;
+  first_name: string;
+  last_name?: string;
+  username?: string;
+  language_code?: string;
+  photo_url?: string;
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [isHashValid, setIsHashValid] = useState(false);
-  const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState('');
 
-  // Wait for validation to complete before rendering the page and stop the
-  // rendering if the hash is invalid. Comment out the following useEffect
-  // hook to see the page render without the hash validation.
-  // I will receive ID, name, username, language_code, photo
   useEffect(() => {
     axios.post('/api/validate-hash', { hash: window.Telegram.WebApp.initData }).then((response) => {
       setIsHashValid(response.status === 200);
       if (response.status === 200) {
-        const { username } = response.data; // Assuming the user ID is returned in the response
-        setUsername(username);
+        // After hash validation, retrieve user data from initDataUnsafe
+        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
+          const webAppUserData = window.Telegram.WebApp.initDataUnsafe.user;
+          if (webAppUserData) {
+            if (webAppUserData.usernames && webAppUserData.usernames !== null) {
+              setUsername(webAppUserData.usernames);
+            }
+          }
+        }
       }
     });
   }, []);
