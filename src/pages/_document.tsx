@@ -18,7 +18,7 @@ function MyDocument() {
       <Head>
         <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
       </Head>
-      <body className="--font-roboto --font-roboto-mono">
+      <body>
         <Main />
         <NextScript />
       </body>

@@ -67,6 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const modifiedPageProps = { ...pageProps, username };
 
   return <Component {...modifiedPageProps} />;
+  // return <Component {...pageProps} />;
 }
 
 export default MyApp;
