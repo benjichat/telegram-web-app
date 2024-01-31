@@ -4,15 +4,6 @@ import axios from 'axios';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 
-type TelegramUserData = {
-  id: number;
-  first_name: string;
-  last_name?: string;
-  username?: string;
-  language_code?: string;
-  photo_url?: string;
-};
-
 function MyApp({ Component, pageProps }: AppProps) {
   const [isHashValid, setIsHashValid] = useState(false);
   const [username, setUsername] = useState('');

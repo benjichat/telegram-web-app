@@ -17,7 +17,9 @@ const Home: NextPage<HomeProps> = ({ username }) => {
 
       <main className="flex w-full flex-1 flex-col items-center justify-center px-4 text-center">
         <span className="text-2xl font-bold text-telegram-black">hi {`${username}`} 😍</span>
-        <div className="mt-8">{/* <CoinSubmissionForm username={username} /> */}</div>
+        <div className="mt-8">
+          <CoinSubmissionForm username={username} />
+        </div>
       </main>
     </div>
   );
